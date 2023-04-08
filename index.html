@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Clock</title>
+</head>
+
+<style>
+  
+  * {
+    margin: 0;
+    padding: 0;
+    background-color: #383838;
+    font-family: 'Poppins', Sans-Serif;
+  }
+  
+  #box {
+    width: 340px;
+    height: 100px;
+    border: 2px solid #5cd1ff;
+    box-shadow: 0px 1px 12px #5cd1ff;
+    border-radius: 6px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #jam {
+    color: #5cd1ff;
+    text-shadow: 0px 2px 12px #80d9ff;
+    font-size: 33px;
+    letter-spacing: 1px;
+    background-color: transparent;
+  }
+  
+  #hari {
+    color: #5cd1ff;
+    text-shadow: 0px 2px 12px #80d9ff;
+    font-size: 16px;
+    background-color: transparent;
+  }
+  
+</style>
+
+<body>
+  
+  <form id="box">
+    <div id="jam"></div>
+    <div id="hari"></div>
+  </form>
+  
+  <script>
+    
+    function displayTime() {
+      let p = new Date();
+      let hours = p.getHours();
+      let minutes = p.getMinutes();
+      let seconds = p.getSeconds();
+      let day = p.getDay();
+      let date = p.getDate();
+      let month = p.getMonth();
+      let year = p.getFullYear();
+      
+      switch (day) {
+        case 0:
+          day = "Minggu"
+        break;
+        case 1:
+          day = "Senin"
+        break;
+        case 2:
+          day = "Selasa"
+        break;
+        case 3:
+          day = "Rabu"
+        break;
+        case 4:
+          day = "Kamis"
+        break;
+        case 5:
+          day = "Jumat"
+        break;
+        case 6:
+          day = "Sabtu"
+        break;
+      }
+      
+      if (hours < 10) {
+        hours = "0" + hours;
+      }
+      if (minutes < 10) {
+        minutes = "0" + minutes;
+      }
+      if (seconds < 10) {
+        seconds = "0" + seconds;
+      }
+      
+      let waktu = hours +":"+ minutes +":"+ seconds;
+      document.getElementById("jam").innerHTML = waktu;
+      let hari = day +", "+ date +"/"+ month +"/"+ year;
+      document.getElementById("hari").innerHTML = hari;
+    }
+    setInterval(displayTime, 1);
+    
+  </script>
+  
+</body>
+</html>
